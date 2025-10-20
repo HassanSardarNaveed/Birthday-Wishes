@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Zaina Baksh! 🎂</title>
+    <style>
+        /* Base styles for the page */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 20px 0; /* ADDED: Vertical padding for breathing room */
+            
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            
+            min-height: 100vh; 
+            background-color: #fce4ec; 
+            
+            /* Ensure 'bg.png' is in the same directory */
+            background-image: url('bg.png'); 
+            background-size: cover;          
+            background-position: center;     
+            background-attachment: fixed;    
+            
+            position: relative; 
+            overflow-x: hidden; /* Keep horizontal overflow hidden */
+            overflow-y: auto;   /* FIX: Allow vertical scrolling if content is too tall */
+        }
+
+        /* ------------------------------------------- */
+        /* Animation and Transition Classes */
+        /* ------------------------------------------- */
+
+        /* General style for the two main content blocks */
+        .content-block {
+            width: 90%; 
+            max-width: 450px; /* 75% size for desktop, matches image size */
+            height: auto;
+            position: absolute; /* Allows both elements to be centered */
+            transition: opacity 1s ease-in-out; /* Smooth fade effect */
+            
+            /* Ensure alignment is maintained for the content block */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fade-out {
+            opacity: 0;
+            pointer-events: none; /* Prevents interaction when hidden */
+        }
+
+        .fade-in {
+            opacity: 1;
+        }
+
+        /* ------------------------------------------- */
+        /* 1. ANIMATED CARD STYLES */
+        /* ------------------------------------------- */
+        #image-container {
+            display: flex; /* Ensures image is centered inside its container */
+        }
+
+        #image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); 
+            animation: bounce 4s infinite ease-in-out alternate;
+            z-index: 10; 
+        }
+        
+        @keyframes bounce {
+            0% {
+                transform: translateY(0) rotate(1deg); 
+            }
+            100% {
+                transform: translateY(15px) rotate(-1deg); 
+            }
+        }
+
+        /* ------------------------------------------- */
+        /* 2. TEXT CARD STYLES (Reusing your original text styles) */
+        /* ------------------------------------------- */
+        #text-container {
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.9); /* Semi-transparent white card */
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            
+            /* Apply a subtle, static scale for presence */
+            transform: scale(0.95);
+            
+            /* FIX: Default display to none when opacity is 0, ensures proper layout transition */
+            display: none; 
+        }
+
+        .title {
+            color: #ff6f91; 
+            font-size: 2.8em; /* RESTORED to original size for prominence */
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse 1.5s infinite alternate; 
+        }
+
+        .message {
+            color: #333;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .closing {
+            color: #880e4f; 
+            font-size: 1.0em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.02);
+            }
+        }
+
+        /* ------------------------------------------- */
+        /* CONFETTI */
+        /* ------------------------------------------- */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ffd700; 
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: fall 10s linear infinite;
+        }
+
+        .confetti:nth-child(2) { background: #ff4500; animation-delay: 2s; }
+        .confetti:nth-child(3) { background: #32cd32; animation-delay: 4s; }
+        .confetti:nth-child(4) { background: #1e90ff; animation-delay: 6s; }
+        .confetti:nth-child(5) { background: #da70d6; animation-delay: 8s; }
+        
+        @keyframes fall {
+            0% { transform: translateY(-100vh) translateX(0); opacity: 1; }
+            100% { transform: translateY(100vh) translateX(100px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Confetti elements -->
+    <div class="confetti" style="left: 10%; animation-duration: 8s;"></div>
+    <div class="confetti" style="left: 25%; animation-duration: 12s;"></div>
+    <div class="confetti" style="left: 40%; animation-duration: 9s;"></div>
+    <div class="confetti" style="left: 55%; animation-duration: 11s;"></div>
+    <div class="confetti" style="left: 70%; animation-duration: 10s;"></div>
+    <div class="confetti" style="left: 85%; animation-duration: 7s;"></div>
+    
+    <!-- 1. IMAGE CONTAINER (Visible initially, fades out) -->
+    <div id="image-container" class="content-block fade-in">
+        <img 
+            src="my_birthday_card.png" 
+            alt="Happy Birthday Zaina Baksh Card" 
+            class="animated-card"
+        >
+    </div>
+
+    <!-- 2. TEXT CONTAINER (Hidden initially, fades in) -->
+    <div id="text-container" class="content-block fade-out">
+        <h1 class="title">🎉 Happy Birthday, Zaina Baksh! 🎂</h1>
+        
+        <p class="message">
+            Wishing a wonderful day to an amazing university fellow and a truly inspiring person. It’s such a joy to know someone as kind, intelligent, and graceful as you.💫
+        </p>
+
+        <p class="message">
+            May this year bring you endless reasons to smile, new achievements to celebrate, and the courage to chase every dream your heart desires. Keep shining with the same confidence and positivity; the world, and our university, need more people like you.
+        </p>
+
+        <p class="closing">
+            Wishing you a birthday filled with happiness, love, and beautiful memories. 💖✨
+        </p>
+    </div>
+
+    <script>
+        const IMAGE_DURATION_MS = 3000; // 3 seconds delay before transition
+
+        window.onload = function() {
+            const imageContainer = document.getElementById('image-container');
+            const textContainer = document.getElementById('text-container');
+            
+            // Wait for the specified duration
+            setTimeout(() => {
+                // 1. Start the fade-out of the image
+                imageContainer.classList.remove('fade-in');
+                imageContainer.classList.add('fade-out');
+
+                // FIX: Make the text container display: flex *before* setting opacity to 1
+                textContainer.style.display = 'flex';
+                
+                // 2. Start the fade-in of the text 
+                // Delay showing the text slightly to ensure the image starts fading first
+                setTimeout(() => {
+                    textContainer.classList.remove('fade-out');
+                    textContainer.classList.add('fade-in');
+                    // FIX: Remove pointer-events after text is visible
+                    textContainer.style.pointerEvents = 'auto'; 
+                }, 500); // 0.5 second delay
+                
+            }, IMAGE_DURATION_MS);
+
+            // FIX: Set initial display to none in JS to ensure it overrides CSS and is ready for transition
+            textContainer.style.display = 'none';
+        };
+    </script>
+
+</body>
+</html>
